@@ -32,7 +32,7 @@ export default function RegistrationForm() {
               name="nickname"
               className={styles.input}
             />
-            {errors.nickname && <div>is required</div>}
+            {errors.nickname}
           </label>
           <label htmlFor="email" className={styles.label}>
             <div className={styles.label__text}>Email:</div>
@@ -43,7 +43,7 @@ export default function RegistrationForm() {
               name="email"
               className={styles.input}
             />
-            {errors.email && <div>is required</div>}
+            {errors.email}
           </label>
           <label htmlFor="password" className={styles.label}>
             <div className={styles.label__text}>Password:</div>
@@ -54,7 +54,7 @@ export default function RegistrationForm() {
               name="password"
               className={styles.input}
             />
-            {errors.password && <div>is required</div>}
+            {errors.password}
           </label>
           <label htmlFor="repeatPassword" className={styles.label}>
             <div className={styles.label__text}>Repeat password:</div>
@@ -65,7 +65,7 @@ export default function RegistrationForm() {
               name="repeatPassword"
               className={styles.input}
             />
-            {errors.repeatPassword && <div>is required</div>}
+            {errors.repeatPassword}
           </label>
           <button className={styles.submit}>Зарегистрироваться</button>
         </form>

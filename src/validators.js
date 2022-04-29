@@ -5,11 +5,12 @@ export const isEmail = (value) =>
 
 export const isValidPassword = (value) => {
   const regSet = [/[a-z]+/, /[A-Z]+/, /\d+/, /\w{6,}/];
-  regSet.forEach((regexp) => {
-    if (!regexp.test(value)) {
+  for (let reg of regSet) {
+    if (!reg.test(value)) {
       return "password must have each of symbols: A-Z, a-z, 0-9";
     }
-  });
+  }
+
   return undefined;
 };
 
