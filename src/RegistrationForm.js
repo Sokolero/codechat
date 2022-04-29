@@ -2,7 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Form, Field } from "react-final-form";
 import styles from "./Auth.module.css";
-import { required } from "./validators";
+import {
+  required,
+  isEmail,
+  isValidPassword,
+  isMatch,
+  composeValidators
+} from "./validators";
 
 function onSubmit(values) {
   return;
@@ -20,6 +26,7 @@ export default function RegistrationForm() {
           <label htmlFor="nickname" className={styles.label}>
             <div className={styles.label__text}>Nickname:</div>
             <Field
+              validate={required}
               component="input"
               type="text"
               name="nickname"
@@ -30,6 +37,7 @@ export default function RegistrationForm() {
           <label htmlFor="email" className={styles.label}>
             <div className={styles.label__text}>Email:</div>
             <Field
+              validate={composeValidators(required, isEmail)}
               component="input"
               type="email"
               name="email"
@@ -40,6 +48,7 @@ export default function RegistrationForm() {
           <label htmlFor="password" className={styles.label}>
             <div className={styles.label__text}>Password:</div>
             <Field
+              validate={composeValidators(required, isValidPassword)}
               component="input"
               type="password"
               name="password"
@@ -50,6 +59,7 @@ export default function RegistrationForm() {
           <label htmlFor="repeatPassword" className={styles.label}>
             <div className={styles.label__text}>Repeat password:</div>
             <Field
+              validate={composeValidators(required, isMatch(values.password))}
               component="input"
               type="password"
               name="repeatPassword"

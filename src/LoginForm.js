@@ -2,7 +2,12 @@ import React from "react";
 import { Form, Field } from "react-final-form";
 import { NavLink } from "react-router-dom";
 import styles from "./Auth.module.css";
-import { required } from "./validators";
+import {
+  required,
+  isEmail,
+  isValidPassword,
+  composeValidators
+} from "./validators";
 
 function onSubmit(values) {
   return;
@@ -20,7 +25,7 @@ export default function LoginForm() {
           <label htmlFor="email" className={styles.label}>
             <div className={styles.label__text}>Email:</div>
             <Field
-              validate={required}
+              validate={composeValidators(required, isEmail)}
               component="input"
               type="email"
               name="email"
@@ -31,7 +36,7 @@ export default function LoginForm() {
           <label htmlFor="password" className={styles.label}>
             <div className={styles.label__text}>Password:</div>
             <Field
-              validate={required}
+              validate={composeValidators(required, isValidPassword)}
               component="input"
               type="password"
               name="password"
