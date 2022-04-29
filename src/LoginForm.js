@@ -31,7 +31,7 @@ export default function LoginForm() {
               name="email"
               className={styles.input}
             />
-            {errors.email && <div>is required</div>}
+            {errors.email}
           </label>
           <label htmlFor="password" className={styles.label}>
             <div className={styles.label__text}>Password:</div>
@@ -42,7 +42,7 @@ export default function LoginForm() {
               name="password"
               className={styles.input}
             />
-            {errors.password && <div>is required</div>}
+            {errors.password}
           </label>
           {console.log(form.getState())}
           <button className={styles.submit}>Войти</button>
